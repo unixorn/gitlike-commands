@@ -1,4 +1,5 @@
-name: Check links in ZSH list
+---
+name: Check links in Readme
 
 on:
   push:
