@@ -34,3 +34,5 @@ If you're using poetry in your python project, you can add a gitlike driver as a
 [tool.poetry.scripts]
 gitalike-demo = "gitlike_commands:subcommand_driver"
 ```
+
+The subcommands can be written in any language, the only requirements are that they are marked executable and follow the `foo-something` naming convention.
