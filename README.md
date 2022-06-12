@@ -5,7 +5,7 @@
 ![Awesomebot](https://github.com/unixorn/gitlike-commands/actions/workflows/awesomebot.yml/badge.svg)
 ![Megalinter](https://github.com/unixorn/gitlike-commands/actions/workflows/mega-linter.yml/badge.svg)
 [![Issue Count](https://codeclimate.com/github/unixorn/gitlike-commands/badges/issue_count.svg)](https://codeclimate.com/github/unixorn/gitlike-commands)
-
+![PyPI - Format](https://img.shields.io/pypi/format/gitlike-commands?style=plastic)
 ## Background
 
 `gitlike-commands` is a python module for easily creating `git`-style subcommand handling.
