@@ -8,6 +8,11 @@ repository = "https://github.com/unixorn/gitlike-commands"
 readme = "README.md"
 license = "Apache-2.0"
 
+classifiers = [
+    "Topic :: System :: System Shells",
+    "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
 [tool.poetry.dependencies]
 python = "^3.9"
 
