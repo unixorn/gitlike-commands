@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "gitlike-commands"
-version = "0.2.0"
+version = "0.2.1"
 description = ""
 authors = ["Joe Block <jpb@unixorn.net>"]
 homepage = "https://github.com/unixorn/gitlike-commands"
