@@ -1,6 +1,6 @@
 # gitlike-commands
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/license/apache-2-0/)
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Funixorn%2Fgitlike-commands%2Fbadge%3Fref%3Dmain&style=plastic)](https://actions-badge.atrox.dev/unixorn/gitlike-commands/goto?ref=main)
 ![Awesomebot](https://github.com/unixorn/gitlike-commands/actions/workflows/awesomebot.yml/badge.svg)
 ![Megalinter](https://github.com/unixorn/gitlike-commands/actions/workflows/mega-linter.yml/badge.svg)

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "gitlike-commands"
-version = "0.2.1"
-description = ""
+version = "0.2.2"
+description = "Makes driver scripts that enable git-like commands so that foo bar will run foo-bar"
 authors = ["Joe Block <jpb@unixorn.net>"]
 homepage = "https://github.com/unixorn/gitlike-commands"
 repository = "https://github.com/unixorn/gitlike-commands"
