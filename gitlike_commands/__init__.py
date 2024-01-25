@@ -16,7 +16,7 @@
 
 __version__ = "0.2.1"
 
-import distutils
+from shutil import which
 import os
 import subprocess
 import sys
@@ -31,7 +31,7 @@ def is_program(name):
     :returns: whether or not the program can be found in $PATH
     :rtype: bool
     """
-    return distutils.spawn.find_executable(name) is not None
+    return which(name) is not None
 
 
 def find_subcommand(args):
