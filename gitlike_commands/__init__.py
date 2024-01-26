@@ -14,12 +14,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-__version__ = "0.2.1"
 
 from shutil import which
 import os
 import subprocess
 import sys
+from importlib import metadata
+
+__version__ = metadata.version(__package__)
 
 
 def is_program(name):
