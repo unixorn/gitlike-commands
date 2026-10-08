@@ -1,5 +1,5 @@
 #
-# Copyright 2015-2025 Joe Block <jpb@unixorn.net>
+# Copyright 2015-2026 Joe Block <jpb@unixorn.net>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -70,6 +70,27 @@ def find_subcommand(args):
     raise RuntimeError("Could not find a executable subcommand for %s" % " ".join(args))
 
 
+def _stream_target(stream):
+    """
+    Return a value usable as a subprocess stdio target.
+
+    `subprocess` writes to a stream by its OS-level file descriptor, so a
+    stream with a real fd (the normal CLI case) is handed through unchanged.
+    A stream with no backing fd (a `StringIO`, a test-capture wrapper) has no
+    fd for the child to inherit, so we return `None` to let the child inherit
+    the parent's descriptor rather than letting `subprocess` raise when it
+    calls `fileno()`.
+
+    :param stream: a file-like object such as `sys.stdin`/`sys.stdout`
+    :returns: the stream if it exposes a usable fd, otherwise `None`
+    """
+    try:
+        stream.fileno()
+    except (AttributeError, OSError, ValueError):
+        return None
+    return stream
+
+
 def subcommand_driver():
     """
     Process the command line arguments and run the appropriate subcommand.
@@ -93,4 +114,9 @@ def subcommand_driver():
     except Exception as e:
         print(str(e))
         sys.exit(1)
-    subprocess.check_call([command] + args)
+    subprocess.check_call(
+        [command] + args,
+        stdin=_stream_target(sys.stdin),
+        stdout=_stream_target(sys.stdout),
+        stderr=_stream_target(sys.stderr),
+    )
