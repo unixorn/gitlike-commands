@@ -24,6 +24,7 @@ Repository = "https://github.com/unixorn/gitlike-commands"
 dev = [
     "pytest>=8.0",
     "pytest-cov>=7.1.0",
+    "ruff>=0.17.0",
 ]
 
 [build-system]

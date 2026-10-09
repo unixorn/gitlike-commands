@@ -66,15 +66,19 @@ class TestFindSubcommand:
 
     def test_no_match_raises(self):
         """No executable subcommand raises RuntimeError."""
-        with mock.patch.object(gitlike_commands, "is_program", return_value=False):
-            with pytest.raises(RuntimeError):
-                find_subcommand(args=["foo", "bar", "baz"])
+        with (
+            mock.patch.object(gitlike_commands, "is_program", return_value=False),
+            pytest.raises(RuntimeError),
+        ):
+            find_subcommand(args=["foo", "bar", "baz"])
 
     def test_single_element_never_matches(self):
         """A single-element arg list cannot match (driver would re-exec itself)."""
-        with mock.patch.object(gitlike_commands, "is_program", return_value=True):
-            with pytest.raises(RuntimeError):
-                find_subcommand(args=["foo"])
+        with (
+            mock.patch.object(gitlike_commands, "is_program", return_value=True),
+            pytest.raises(RuntimeError),
+        ):
+            find_subcommand(args=["foo"])
 
 
 class TestStreamTarget:
@@ -125,9 +129,9 @@ class TestSubcommandDriver:
             ),
             mock.patch.object(gitlike_commands.sys, "argv", ["foo"]),
             mock.patch.object(gitlike_commands.subprocess, "check_call") as check_call,
+            pytest.raises(SystemExit) as excinfo,
         ):
-            with pytest.raises(SystemExit) as excinfo:
-                subcommand_driver()
+            subcommand_driver()
 
         assert excinfo.value.code == 1
         check_call.assert_not_called()
@@ -140,9 +144,9 @@ class TestSubcommandDriver:
             ),
             mock.patch.object(gitlike_commands.sys, "argv", ["foo", "bar"]),
             mock.patch.object(gitlike_commands.subprocess, "check_call") as check_call,
+            pytest.raises(SystemExit) as excinfo,
         ):
-            with pytest.raises(SystemExit) as excinfo:
-                subcommand_driver()
+            subcommand_driver()
 
         assert excinfo.value.code == 1
         check_call.assert_not_called()

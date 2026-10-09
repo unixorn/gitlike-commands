@@ -67,7 +67,7 @@ def find_subcommand(args):
         command_arguments = args[len(args) - i :]
         if is_program(os.path.basename(command)):
             return (command, command_arguments)
-    raise RuntimeError("Could not find a executable subcommand for %s" % " ".join(args))
+    raise RuntimeError(f"Could not find a executable subcommand for {' '.join(args)}")
 
 
 def _stream_target(stream):
@@ -109,9 +109,9 @@ def subcommand_driver():
         # If we can't construct a subcommand from sys.argv, it'll still be able
         # to find this driver script, and re-running ourself isn't useful.
         if os.path.basename(command) == sys.argv[0]:
-            print("Could not find a subcommand for %s" % " ".join(sys.argv))
+            print(f"Could not find a subcommand for {' '.join(sys.argv)}")
             sys.exit(1)
-    except Exception as e:
+    except RuntimeError as e:
         print(str(e))
         sys.exit(1)
     subprocess.check_call(
