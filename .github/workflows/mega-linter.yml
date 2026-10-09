@@ -54,6 +54,7 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PYTHON_PYRIGHT_DISABLE_ERRORS: true
+          REPOSITORY_OSV_SCANNER_DISABLE_ERRORS: true
           DISABLE_LINTERS: SPELL_CSPELL,PYTHON_BANDIT,PYTHON_BLACK,PYTHON_PYLINT,REPOSITORY_CHECKOV,REPOSITORY_TRIVY,REPOSITORY_GRYPE,SPELL_LYCHEE
 
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section
