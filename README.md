@@ -1,3 +1,13 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [gitlike-commands](#gitlike-commands)
+  - [Background](#background)
+  - [Usage](#usage)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # gitlike-commands
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/license/apache-2-0/)
@@ -28,11 +38,21 @@ if __name__ == '__main__':
 
 Running `foo bar baz` will look for a `foo-bar-baz` script, and if present in your `$PATH`, run it. If there is no `foo-bar-baz`, it will look for `foo-bar`, and if it finds that, run `foo-bar baz`.
 
-If you're using poetry in your python project, you can add a gitlike driver as a scripts entry:
+You can add a gitlike driver as a scripts entry in your `pyproject.toml`. With a
+PEP 621 layout (uv, hatch, pdm, and other standards-based tools):
+
+```toml
+[project.scripts]
+gitalike-demo = "gitlike_commands:subcommand_driver"
+```
+
+Or, if your project still uses poetry:
 
 ```toml
 [tool.poetry.scripts]
 gitalike-demo = "gitlike_commands:subcommand_driver"
 ```
+
+The subcommand inherits the driver's `stdin`, `stdout`, and `stderr`, so piped input (`echo data | foo bar`), interactive prompts, and output all pass through to the subcommand unchanged.
 
 The subcommands can be written in any language, the only requirements are that they are marked executable and follow the `foo-something` naming convention.
